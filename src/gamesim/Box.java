@@ -80,6 +80,14 @@ public class Box {
         return r;
     }
     
+    public Shape getShapeColor()
+    {
+        r = new Rectangle(x, y, width, height);
+        r.setFill(Color.BLUE);
+        r.setStroke(Color.BLACK);
+        return r;
+    }
+    
     public void updateShape()
     {
         r.setX(x);
