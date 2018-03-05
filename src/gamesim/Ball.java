@@ -8,21 +8,27 @@ import gamephysics.*;
 public class Ball {
     private Ray r;
     private Circle c;
-    private int startX;
-    private int startY;
+    private int startingX;
+    private int startingY;
+    private int startVelX;
+    private int startVelY;
     
     public Ball(int startX,int startY,int dX,int dY)
     {
         Vector v = new Vector(dX,dY);
-        startX = dX;
-        startY = dY;
+        startingX = startX;
+        startingY = startY;
+        startVelX = dX;
+        startVelY = dY;
         double speed = v.length();
         r = new Ray(new Point(startX,startY),v,speed);
     }
     
     public void resetPos()
     {
-        Vector v = new Vector(startX, startY);
+        Vector v = new Vector(startVelX, startVelY);
+        double speed = v.length();
+        r = new Ray(new Point(startingX,startingY),v,speed);
     }
     
     public Ray getRay()

@@ -9,20 +9,23 @@ import gamephysics.*;
 
 public class Simulation {
     private Box outermost;
-    private Box outer;
     private Ball ball;
     private Box player1;
     private Box player2;
     private Lock lock;
-    private Ray oldLoc;
+    private Box goal1;
+    private Box goal2;
+    
+    
     
     public Simulation(int width,int height,int dX,int dY)
     {
         outermost = new Box(0,0,width,height,false);
-//        outer = new Box(1, 1, width-1, height-1, false);
         ball = new Ball(width/2,height/2,dX,dY);
         player1 = new Box(width - 60,height - 40, 40, 20,true);
         player2 = new Box(width-100, height-200, 40, 20, true);
+        goal1 = new Box(width/2-(width/4)/2,0,width/4,20,true);
+        goal2 = new Box(width/2-(width/4)/2,height-20,width/4,20,true);
         lock = new ReentrantLock();
     }
     
@@ -30,7 +33,6 @@ public class Simulation {
     {
         lock.lock();
         Ray newLoc = player1.bounceRay(ball.getRay(), time);
-        oldLoc = newLoc;
         Ray newLoc2 = player2.bounceRay(ball.getRay(), time);
         if(newLoc != null && newLoc2 == null)
             ball.setRay(newLoc);
@@ -43,11 +45,11 @@ public class Simulation {
             else
                 ball.move(time);
         }
-/*        if (!outermost.contains(ball.getRay().origin))
+        if (!outermost.contains(ball.getRay().origin))
         {
-           ball = new Ball(150, 150, 2, 2);
+           ball.resetPos();
         }
-  */          
+            
         lock.unlock();
     }
     
@@ -121,10 +123,11 @@ public class Simulation {
     {
         ArrayList<Shape> newShapes = new ArrayList<Shape>();
         newShapes.add(outermost.getShape());
-//        newShapes.add(outer.getShape());
         newShapes.add(player1.getShape());
         newShapes.add(player2.getShape());
         newShapes.add(ball.getShape());
+        newShapes.add(goal1.getShape());
+        newShapes.add(goal2.getShape());
         return newShapes;
     }
     
