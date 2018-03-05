@@ -18,17 +18,17 @@ public class Simulation {
     private Box goal2;
     private int p1Score = 0;
     private int p2Score = 0;
-    private Text p1Scores = new Text(20,11,"Player One: " + p1Score);
-    private Text p2Scores = new Text(20,250,"Player Two: " + p2Score);
+    private Text p1Scores = new Text(20,15,"Player One: " + p1Score);
+    private Text p2Scores = new Text(20,245,"Player Two: " + p2Score);
 
     public Simulation(int width,int height,int dX,int dY)
     {
         outermost = new Box(0,0,width,height,false);
         ball = new Ball(width/2,height/2,dX,dY);
-        player1 = new Box(width/2-10,20, 40, 20,true);
-        player2 = new Box(width/2-10, height-40, 40, 20, true);
+        player1 = new Box(width/2-20,20, 40, 20,true);
+        player2 = new Box(width/2-20, height-40, 40, 20, true);
         goal1 = new Box(width/2-(width/4)/2,0,width/4,10,true);
-        goal2 = new Box(width/2-(width/4)/2,height-20,width/4,10,true);
+        goal2 = new Box(width/2-(width/4)/2,height-10,width/4,10,true);
         lock = new ReentrantLock();
     }
     
