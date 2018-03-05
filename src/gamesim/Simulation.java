@@ -25,8 +25,8 @@ public class Simulation {
     {
         outermost = new Box(0,0,width,height,false);
         ball = new Ball(width/2,height/2,dX,dY);
-        player1 = new Box(width - 60,height - 40, 40, 20,true);
-        player2 = new Box(width-100, height-200, 40, 20, true);
+        player1 = new Box(width/2,20, 40, 20,true);
+        player2 = new Box(width/2, height-40, 40, 20, true);
         goal1 = new Box(width/2-(width/4)/2,0,width/4,10,true);
         goal2 = new Box(width/2-(width/4)/2,height-20,width/4,10,true);
         lock = new ReentrantLock();
