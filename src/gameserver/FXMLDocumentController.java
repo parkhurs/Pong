@@ -49,7 +49,7 @@ public class FXMLDocumentController implements Initializable {
                     });
           
                     // Create and start a new thread for the connection
-                    new Thread(new runGame(socket,textArea)).start();
+//                    new Thread(new runGame(socket,textArea)).start();
                 }
             }
             catch(IOException ex)
@@ -60,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
     }    
 }
 
-class runGame implements Runnable
+/*class runGame implements Runnable
 {
     int p1Score = 0;
     int p2Score = 0;
@@ -94,4 +94,4 @@ class runGame implements Runnable
             ex.printStackTrace();
         }
     }
-}
+}*/
