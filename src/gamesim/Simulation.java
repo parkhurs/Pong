@@ -48,6 +48,22 @@ public class Simulation {
             else
                 ball.move(time);
         }
+        if(goal1.contains(ball.getRay().origin))
+        {
+            p2Score++;
+            p2Scores = new Text(20,245,"Player Two: " + p2Score);
+            ball.resetPos();
+            player1.setPos(130,20);
+            player2.setPos(130,210);
+        }
+        else if (goal2.contains(ball.getRay().origin))
+        {
+            p1Score++;
+            p1Scores = new Text(20,15,"Player One: " + p1Score);
+            ball.resetPos();
+            player1.setPos(130, 20);
+            player2.setPos(130, 210);
+        }
         if (!outermost.contains(ball.getRay().origin))
         {
            ball.resetPos();
