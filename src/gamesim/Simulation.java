@@ -18,8 +18,8 @@ public class Simulation {
     private Box goal2;
     private int p1Score = 0;
     private int p2Score = 0;
-    private Text p1Scores = new Text(80,50,"Player One's score: " + p1Score);
-    private Text p2Scores = new Text(10,280,"Player Two's score: " + p2Score);
+    private Text p1Scores = new Text(80,50,"Player One: " + p1Score);
+    private Text p2Scores = new Text(10,230,"Player Two: " + p2Score);
 
     public Simulation(int width,int height,int dX,int dY)
     {
