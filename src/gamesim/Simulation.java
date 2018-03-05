@@ -20,6 +20,7 @@ public class Simulation {
     private int p2Score = 0;
     private Text p1Scores = new Text(20,15,"Player One: " + p1Score);
     private Text p2Scores = new Text(20,245,"Player Two: " + p2Score);
+    ArrayList<Shape> newShapes = new ArrayList<Shape>();
 
     public Simulation(int width,int height,int dX,int dY)
     {
@@ -51,7 +52,7 @@ public class Simulation {
         if(goal1.contains(ball.getRay().origin))
         {
             p2Score++;
-            p2Scores = new Text(20,245,"Player Two: " + p2Score);
+            p2Scores.setText("Player Two: " + p2Score);
             ball.resetPos();
             player1.setPos(130,20);
             player2.setPos(130,210);
@@ -59,7 +60,7 @@ public class Simulation {
         else if (goal2.contains(ball.getRay().origin))
         {
             p1Score++;
-            p1Scores = new Text(20,15,"Player One: " + p1Score);
+            p1Scores.setText("Player One: " + p1Score);
             ball.resetPos();
             player1.setPos(130, 20);
             player2.setPos(130, 210);
@@ -140,7 +141,6 @@ public class Simulation {
     
     public List<Shape> setUpShapes()
     {
-        ArrayList<Shape> newShapes = new ArrayList<Shape>();
         newShapes.add(outermost.getShape());
         newShapes.add(player1.getShape());
         newShapes.add(player2.getShape());

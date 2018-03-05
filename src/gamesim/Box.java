@@ -39,6 +39,12 @@ public class Box {
     {
         this.x=x;
         this.y=y;
+        walls.clear();
+        walls.add(new LineSegment(new Point(x+width,y),new Point(x,y)));
+        walls.add(new LineSegment(new Point(x+width,y+height),new Point(x+width,y)));
+        walls.add(new LineSegment(new Point(x,y+height),new Point(x+width,y+height)));
+        walls.add(new LineSegment(new Point(x,y),new Point(x,y+height)));
+        
     }
     public Ray bounceRay(Ray in,double time)
     {
