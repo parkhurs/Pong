@@ -6,6 +6,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import javafx.scene.shape.Shape;
 import gamephysics.*;
+import javafx.scene.text.Text;
 
 public class Simulation {
     private Box outermost;
@@ -15,17 +16,19 @@ public class Simulation {
     private Lock lock;
     private Box goal1;
     private Box goal2;
-    
-    
-    
+    private int p1Score = 0;
+    private int p2Score = 0;
+    private Text p1Scores = new Text(80,50,"Player One's score: " + p1Score);
+    private Text p2Scores = new Text(10,280,"Player Two's score: " + p2Score);
+
     public Simulation(int width,int height,int dX,int dY)
     {
         outermost = new Box(0,0,width,height,false);
         ball = new Ball(width/2,height/2,dX,dY);
         player1 = new Box(width - 60,height - 40, 40, 20,true);
         player2 = new Box(width-100, height-200, 40, 20, true);
-        goal1 = new Box(width/2-(width/4)/2,0,width/4,20,true);
-        goal2 = new Box(width/2-(width/4)/2,height-20,width/4,20,true);
+        goal1 = new Box(width/2-(width/4)/2,0,width/4,10,true);
+        goal2 = new Box(width/2-(width/4)/2,height-20,width/4,10,true);
         lock = new ReentrantLock();
     }
     
@@ -126,8 +129,10 @@ public class Simulation {
         newShapes.add(player1.getShape());
         newShapes.add(player2.getShape());
         newShapes.add(ball.getShape());
-        newShapes.add(goal1.getShape());
-        newShapes.add(goal2.getShape());
+        newShapes.add(goal1.getShapeColor());
+        newShapes.add(goal2.getShapeColor());
+        newShapes.add(p1Scores);
+        newShapes.add(p2Scores);
         return newShapes;
     }
     
