@@ -15,7 +15,6 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -28,6 +27,8 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private TextArea textArea;
+    
+    private int clientNo = 0;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -43,9 +44,11 @@ public class FXMLDocumentController implements Initializable {
                     // Listen for a new connection request
                     Socket socket = serverSocket.accept();
                     
+                    clientNo++;
+                    
                     Platform.runLater( () -> {
                     // Display the client number
-                    textArea.appendText("at " + new Date() + '\n');
+                    textArea.appendText("Starting thread for client " + clientNo + " at " + new Date() + '\n');
                     });
           
                     // Create and start a new thread for the connection
@@ -60,12 +63,19 @@ public class FXMLDocumentController implements Initializable {
     }    
 }
 
-/*class runGame implements Runnable
+class runGame implements Runnable, game.GameConstants
 {
     int p1Score = 0;
     int p2Score = 0;
+    private Socket socket;
+    private TextArea textArea;
     
-    public runGame (Socket socket, TextArea textArea)
+    public runGame(Socket socket, TextArea textArea)
+    {
+        this.socket = socket;
+        this.textArea = textArea;
+    }
+    public void run() 
     {
         try
         {
@@ -78,13 +88,20 @@ public class FXMLDocumentController implements Initializable {
                 int request = Integer.parseInt(inputFromClient.readLine());
                 switch(request)
                 {
-                    case GET_P1_SCORE:
-                        outputToClient.println(p1Score);
-                        outputToClient.flush();
+                    case PLAYER1:
                         break;
-                    case GET_P2_SCORE:
-                        outputToClient.println(p2Score);
-                        outputToClient.flush();
+                    case PLAYER2:
+                        break;
+                    case PLAYER1_WON:
+                        break;
+                    case PLAYER2_WON:
+                        break;
+                    case SEND_MOVE:
+                        break;
+                    case GET_MOVE:
+                        break;
+                    case GET_SCORE:
+                        
                 }
                 
             }
@@ -94,4 +111,4 @@ public class FXMLDocumentController implements Initializable {
             ex.printStackTrace();
         }
     }
-}*/
+}
