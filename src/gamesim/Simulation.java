@@ -20,6 +20,7 @@ public class Simulation {
     private int p2Score = 0;
     private Text p1Scores = new Text(20,15,"Player One: " + p1Score);
     private Text p2Scores = new Text(20,245,"Player Two: " + p2Score);
+    private Text winner = new Text (118, 115, " ");
     ArrayList<Shape> newShapes = new ArrayList<Shape>();
 
     public Simulation(int width,int height,int dX,int dY)
@@ -68,6 +69,15 @@ public class Simulation {
         if (!outermost.contains(ball.getRay().origin))
         {
            ball.resetPos();
+        }
+        if(p2Score == 5 || p1Score == 5)
+        {
+            ball.endBall();
+            if(p2Score == 5)
+            {
+                winner.setText("Player 2 wins!");
+            }
+            else winner.setText("Player 1 wins!");
         }
             
         lock.unlock();
@@ -149,6 +159,7 @@ public class Simulation {
         newShapes.add(goal2.getShapeColor());
         newShapes.add(p1Scores);
         newShapes.add(p2Scores);
+        newShapes.add(winner);
         return newShapes;
     }
     

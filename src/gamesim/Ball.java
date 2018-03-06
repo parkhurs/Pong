@@ -31,6 +31,13 @@ public class Ball {
         r = new Ray(new Point(startingX,startingY),v,speed);
     }
     
+    public void endBall()
+    {
+        Vector v = new Vector(0,0);
+        double speed = v.length();
+        r = new Ray(new Point(startingX,startingY),v,speed);
+    }
+    
     public Ray getRay()
     {
         return r;
