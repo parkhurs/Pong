@@ -12,7 +12,7 @@ import javafx.scene.Parent;
 
 public class GameServer extends Application
 {
-    @Override
+/*    @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
@@ -26,7 +26,7 @@ public class GameServer extends Application
         stage.setOnCloseRequest(event->System.exit(0));
         stage.show();
     }
-/*    @Override
+*/    @Override
     public void start(Stage primaryStage) {
         GamePane root = new GamePane();
         Simulation sim = new Simulation(300, 250, 2, 2);
@@ -47,17 +47,30 @@ public class GameServer extends Application
                 case RIGHT:
                     sim.moveInner(3, 0);
                     break;
-                case S:
-                    sim.movep2(0,3);
+                
+                case Q:
+                    sim.movep2(-3,-3);
                     break;
                 case W:
                     sim.movep2(0,-3);
                     break;
-                case A:
-                    sim.movep2(-3,0);
+                case E:
+                    sim.movep2(3,-3);
                     break;
                 case D:
                     sim.movep2(3,0);
+                    break;
+                case C:
+                    sim.movep2(3,3);
+                    break;
+                case X:
+                    sim.movep2(0,3);
+                    break;
+                case Z:
+                    sim.movep2(-3,3);
+                    break;
+                case A:
+                    sim.movep2(-3,0);
                     break;
             }
         });
@@ -80,8 +93,8 @@ public class GameServer extends Application
 
                 }
             }
-        }).start(); */
-
+        }).start(); 
+    }
     /**
      * @param args the command line arguments
      */

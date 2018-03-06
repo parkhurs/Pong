@@ -5,6 +5,7 @@
  */
 package gameserver;
 
+import gamesim.Simulation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -69,6 +70,7 @@ class runGame implements Runnable, game.GameConstants
     int p2Score = 0;
     private Socket socket;
     private TextArea textArea;
+    private Simulation simGame;
     
     public runGame(Socket socket, TextArea textArea)
     {
@@ -89,16 +91,22 @@ class runGame implements Runnable, game.GameConstants
                 switch(request)
                 {
                     case PLAYER1:
+                        
                         break;
                     case PLAYER2:
+                        
                         break;
                     case PLAYER1_WON:
+                        
                         break;
                     case PLAYER2_WON:
+                        
                         break;
                     case SEND_MOVE:
+                        
                         break;
                     case GET_MOVE:
+                        
                         break;
                     case GET_SCORE:
                         

@@ -13,6 +13,7 @@ public class Box {
     public int y;
     public int width;
     public int height;
+    public int taken = 0;
     
     // Set outward to true if you want a box with outward pointed normals
     public Box(int x,int y,int width,int height,boolean outward)
@@ -97,6 +98,20 @@ public class Box {
         r.setFill(Color.BLUE);
         r.setStroke(Color.BLACK);
         return r;
+    }
+    
+    public int getTaken()
+    {
+        return taken;
+    }
+    public void assignPlayer()
+    {
+        taken = 1;
+    }
+    
+    public void removePlayer()
+    {
+        taken = 0;
     }
     
     public void updateShape()
