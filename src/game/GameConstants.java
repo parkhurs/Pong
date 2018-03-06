@@ -1,6 +1,4 @@
-
-package gameserver;
-
+package game;
 
 public interface GameConstants {
     public static int PLAYER1 = 1; // Indicate player 1
