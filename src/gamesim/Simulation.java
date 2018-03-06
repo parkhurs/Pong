@@ -116,6 +116,18 @@ public class Simulation {
         lock.unlock();
     }
     
+    public void assignPlayer()
+    {
+        if(player1.getTaken()==0)
+        {
+            player1.assignPlayer();
+        }
+        else
+        {
+            player2.assignPlayer();
+        }
+    }
+    
     public void movep2(int deltaX,int deltaY)
     {
         lock.lock();
