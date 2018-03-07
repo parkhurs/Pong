@@ -15,7 +15,7 @@ public class LineSegment {
         this.b = b;
     }
     
-    public void move(int deltaX,int deltaY)
+    public void move(double deltaX,double deltaY)
     {
         a.x += deltaX;
         a.y += deltaY;

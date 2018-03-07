@@ -108,7 +108,6 @@ class runGame implements Runnable, game.GameConstants
                     case GET_MOVE:
                         
                         break;
-                    case GET_SCORE:
                         
                 }
                 

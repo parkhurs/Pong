@@ -60,6 +60,17 @@ public class Ball {
         return c;
     }
     
+    public void setPos(Point p)
+    {
+        r.origin = p;
+    }
+    
+    public Point getBall()
+    {
+        Point p = new Point(r.origin.x, r.origin.y);
+        return p;
+    }
+    
     public void updateShape()
     {
         c.setCenterX(r.origin.x);
