@@ -78,10 +78,10 @@ public class GameServer extends Application
         // This is the main animation thread
         new Thread(() -> {
             while (true) {
-                sim.evolve(1.0);
+                //sim.evolve(1.0);
                 Platform.runLater(()->sim.updateShapes());
                 try {
-                    Thread.sleep(25);
+                    Thread.sleep(250);
                 } catch (InterruptedException ex) {
 
                 }
@@ -206,7 +206,7 @@ class HandleAClient implements Runnable, game.GameConstants {
                             sim.movep2(0,0);
                             break;
                     }
-                System.out.println(sim.getP1Pos().toString());
+           //     System.out.println(sim.getP1Pos().toString());
                 outputToClient1.println(sim.getBall()); //Point
                 outputToClient2.println(sim.getBall());
                 outputToClient1.println(sim.getScoreP1()); //Int
@@ -219,8 +219,15 @@ class HandleAClient implements Runnable, game.GameConstants {
                 outputToClient2.println(sim.getP2Pos());
                 outputToClient1.flush();
                 outputToClient2.flush();
-                sim.evolve(1.0);
+                sim.evolve(2.0);
                 Platform.runLater(()->sim.updateShapes());
+                try{
+                    Thread.sleep(250);
+                }
+                catch(Exception exe)
+                {
+                    exe.printStackTrace();
+                }
             }
         }
         catch(IOException ex)
