@@ -156,17 +156,18 @@ class HandleAClient implements Runnable, game.GameConstants {
     
     public void run()
     {
+        
         try
-        {
+        { 
             // Create reading and writing streams
             BufferedReader inputFromClient1 = new BufferedReader(new InputStreamReader(socket1.getInputStream()));
             PrintWriter outputToClient1 = new PrintWriter(socket1.getOutputStream());
             BufferedReader inputFromClient2 = new BufferedReader(new InputStreamReader(socket2.getInputStream()));
             PrintWriter outputToClient2 = new PrintWriter(socket2.getOutputStream());
             
-            // Continuously serve the client
             while (true)
             {
+               
                 String move1 = inputFromClient1.readLine();
                 switch (move1)
                     {
@@ -205,7 +206,7 @@ class HandleAClient implements Runnable, game.GameConstants {
                             sim.movep2(0,0);
                             break;
                     }
-                sim.evolve(1.0);
+                System.out.println(sim.getP1Pos().toString());
                 outputToClient1.println(sim.getBall()); //Point
                 outputToClient2.println(sim.getBall());
                 outputToClient1.println(sim.getScoreP1()); //Int
@@ -218,18 +219,8 @@ class HandleAClient implements Runnable, game.GameConstants {
                 outputToClient2.println(sim.getP2Pos());
                 outputToClient1.flush();
                 outputToClient2.flush();
-                
-//                  case PLAYER1: {
-//                      outputToClient.println(PLAYER1);
-//                  outputToClient.flush();
-//                  //handle = inputFromClient.readLine();
-//                  break;
-//              }
-//              case PLAYER2: {
-//                  outputToClient.println(PLAYER2);
-//                  outputToClient.flush();
-//                  break;
-//              }
+                sim.evolve(1.0);
+                Platform.runLater(()->sim.updateShapes());
             }
         }
         catch(IOException ex)
