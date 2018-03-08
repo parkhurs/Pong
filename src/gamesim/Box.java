@@ -95,8 +95,14 @@ public class Box {
         r.setStroke(Color.BLACK);
         return r;
     }
-    
-    public Shape getShapeColor()
+    public Shape getShapeGray()
+    {
+        r = new Rectangle(x, y, width, height);
+        r.setFill(Color.GRAY);
+        r.setStroke(Color.BLACK);
+        return r;
+    }
+    public Shape getShapeBlue()
     {
         r = new Rectangle(x, y, width, height);
         r.setFill(Color.BLUE);

@@ -203,11 +203,11 @@ public class Simulation {
     public List<Shape> setUpShapes()
     {
         newShapes.add(outermost.getShape());
-        newShapes.add(player1.getShape());
-        newShapes.add(player2.getShape());
+        newShapes.add(player1.getShapeGray());
+        newShapes.add(player2.getShapeBlue());
         newShapes.add(ball.getShape());
-        newShapes.add(goal1.getShapeColor());
-        newShapes.add(goal2.getShapeColor());
+        newShapes.add(goal1.getShapeBlue());
+        newShapes.add(goal2.getShapeGray());
         newShapes.add(p1Scores);
         newShapes.add(p2Scores);
         newShapes.add(winner);
