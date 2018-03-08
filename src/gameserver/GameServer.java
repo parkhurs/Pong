@@ -222,7 +222,7 @@ class HandleAClient implements Runnable, game.GameConstants {
                 sim.evolve(2.0);
                 Platform.runLater(()->sim.updateShapes());
                 try{
-                    Thread.sleep(250);
+                    Thread.sleep(25);
                 }
                 catch(Exception exe)
                 {
